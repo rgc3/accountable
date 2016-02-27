@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name, class: "sr-ony" %><br>
+    <%= f.text_field :name, class: "form-control", placeholder: "Goal Name" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :description, class: "sr-only" %><br>
+    <%= f.text_area :description, class: "form-control", placeholder: "Goal Description", rows: 5 %>
   </div>
   <div class="field cant-see-me">
     <%= f.label :user_id %><br>

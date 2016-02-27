@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<div>
 <p>
   <strong>Name:</strong>
   <%= @goal.name %>
@@ -15,5 +16,20 @@
   <%= @goal.user.username %>
 </p>
 
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
+<%= link_to 'Edit', edit_goal_path(@goal) %>
+</div>
+
+<div>
+  <%= render 'comments/form' %>
+</div>
+
+<div>
+
+<h4>Comments</h4>
+<% @goal.comments.each do |comment| %>
+<p><strong><%= comment.user.username %></strong> said: </p>
+<p><%= comment.comment_entry %></p>
+<% end %>
+</div>
+
 <%= link_to 'Back', goals_path %>
