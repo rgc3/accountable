@@ -1,2 +1,25 @@
 <h1>Profiles#show</h1>
 <p>Find me in app/views/profiles/show.html.erb</p>
+
+<%= @user.first_name %>
+<%= @user.username %><br />
+
+<%= @user.goals.count %> <span class="small text">Goals</span><br />
+<%= @user.bio %>
+<%= @user.location %>
+Joined on <%= @user.created_at.strftime("%B %Y") %>
+
+<% if current_user.id != @user.id %>
+  <% if current_user.friends.include?(@user) %>
+    <%= link_to "Following", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete, class: "btn btn-primary", id:"unfollow_btn" %>
+  <% else %>
+    <%= link_to "Follow", relationships_path(:friend_id => @user), method: :post, class: "btn btn_success" %>
+  <% end %>
+<% end %>
+
+<br />
+
+<% @user.goals.each do |goal| %>
+Goal: <%= goal.name %><br />
+<%= goal.description %><br />
+<% end %>
