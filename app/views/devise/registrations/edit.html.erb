@@ -22,17 +22,27 @@ Also the form is not lining up properly. -->
     <%= f.text_field :username %>
   </div>
 
-  <div class="field form-group">
-  <%= f.label :bio %><br />
-   <%= f.text_area :bio%>
-  </div
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_field :birthday %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_area :bio%>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
-  </div><br />
+  </div>
 
-  <div class="field form-group">
+  <div class="field">
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
   </div><br />
@@ -59,7 +69,7 @@ Also the form is not lining up properly. -->
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
-<% end %>
+<% end %>  <!-- Form end -->
 
 <h3>Cancel my account</h3>
 
