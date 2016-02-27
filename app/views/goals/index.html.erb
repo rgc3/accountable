@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Goals</h1>
+<h1>All User's Goals</h1>
 
 <table>
   <thead>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= goal.name %></td>
         <td><%= goal.description %></td>
-        <td><%= goal.user_id %></td>
+        <td><%= goal.user.username %></td>
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
         <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
