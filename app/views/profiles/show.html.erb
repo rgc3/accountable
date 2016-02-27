@@ -17,9 +17,10 @@ Joined on <%= @user.created_at.strftime("%B %Y") %>
   <% end %>
 <% end %>
 
-<br />
+<br /><br />
 
 <% @user.goals.each do |goal| %>
-Goal: <%= goal.name %><br />
+<strong>Goal: <%= goal.name %></strong><br />
 <%= goal.description %><br />
+<hr />
 <% end %>
