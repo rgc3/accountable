@@ -9,6 +9,8 @@
 <%= @user.location %>
 Joined on <%= @user.created_at.strftime("%B %Y") %>
 
+<!-- Following and Unfollowing users -->
+
 <% if current_user.id != @user.id %>
   <% if current_user.friends.include?(@user) %>
     <%= link_to "Following", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete, class: "btn btn-primary", id:"unfollow_btn" %>
@@ -18,6 +20,8 @@ Joined on <%= @user.created_at.strftime("%B %Y") %>
 <% end %>
 
 <br /><br />
+
+<!-- User goals -->
 
 <% @user.goals.each do |goal| %>
 <strong>Goal: <%= goal.name %></strong><br />
