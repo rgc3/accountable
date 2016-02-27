@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All User's Goals</h1>
+<h1>All Goals</h1>
 
 <table>
   <thead>
@@ -14,14 +14,21 @@
 
   <tbody>
     <% @goals.each do |goal| %>
+    
+      <% if goal.completed? %>
       <tr>
         <td><%= goal.name %></td>
         <td><%= goal.description %></td>
         <td><%= goal.user.username %></td>
+        <!--<p>I DID IT at <%#time_ago_in_words(goal.completed_at) %></p>-->
+        <%else%>
+        
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+        <td><%= link_to 'Mark as Complete', complete_goal_path(goal), method: :patch %></td>
         <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>
