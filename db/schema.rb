@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227004452) do
+ActiveRecord::Schema.define(version: 20160227011106) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "author"
+    t.text     "comment_entry"
+    t.integer  "goal_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "goals", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +28,13 @@ ActiveRecord::Schema.define(version: 20160227004452) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,6 +50,12 @@ ActiveRecord::Schema.define(version: 20160227004452) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.date     "birthday"
+    t.string   "location"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
