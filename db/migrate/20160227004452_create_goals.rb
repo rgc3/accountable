@@ -3,7 +3,7 @@ class CreateGoals < ActiveRecord::Migration
     create_table :goals do |t|
       t.string :name
       t.text :description
-      t.integer :user_id
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

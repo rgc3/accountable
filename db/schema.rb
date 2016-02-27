@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20160227013732) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "goals", ["user_id"], name: "index_goals_on_user_id"
+
   create_table "relationships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
