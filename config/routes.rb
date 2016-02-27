@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   resources :comments
   resources :goals
   devise_for :users
-  
-  get 'profiles/index'
 
-  get 'profiles/feed'
+  get "profiles" => "profiles#index"
 
-  get 'profiles/show'
+  get "feed" => "profiles#feed"
+
+  get "profiles/:id" => "profiles#show", as: :profile
 
   root 'goals#index'
 
