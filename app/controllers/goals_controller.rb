@@ -68,6 +68,11 @@ class GoalsController < ApplicationController
     @goal.update_attribute(:completed_at, Time.now)
       redirect_to root_path
   end
+  
+ def leaderboard
+   @user = User.all
+   @goal = Goal.all
+ end
 
   private
     # Use callbacks to share common setup or constraints between actions.
