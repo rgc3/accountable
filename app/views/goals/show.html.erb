@@ -1,34 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<div>
-<p>
-  <strong>Name:</strong>
-  <%= @goal.name %>
-</p>
+<div class="row">
+<!-- Left Column -->
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><strong>Goal Name: </strong><%= @goal.name %></h3>
+      </div>
+      <div class="panel-body">
+        <%= @goal.description %>
+      </div>
+      <div class="panel-footer">
+        <strong>User: </strong>
+        <%= @goal.user.username %>
+      </div>
+    </div>
+  </div>
+<!-- Right Column -->
+  <div class="col-md-6">
+    <div>
+      <%= render 'comments/form' %>
+    </div>
+    <br />
 
-<p>
-  <strong>Description:</strong>
-  <%= @goal.description %>
-</p>
+    <% @goal.comments.each do |comment| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong><%= comment.user.username %></strong> said: </h3>
+        </div>
+        <div class="panel-body">
+          <%= comment.comment_entry %>
+        </div>
+      </div>
+    <% end %>
 
-<p>
-  <strong>User:</strong>
-  <%= @goal.user.username %>
-</p>
-<%= link_to 'Edit', edit_goal_path(@goal) %>
-</div>
+  </div>
+</div> <!-- row -->
 
-<div>
-  <%= render 'comments/form' %>
-</div>
-
-<div>
-
-<h4>Comments</h4>
-<% @goal.comments.each do |comment| %>
-<p><strong><%= comment.user.username %></strong> said: </p>
-<p><%= comment.comment_entry %></p>
-<% end %>
-</div>
 
 <%= link_to 'Back', goals_path %>
