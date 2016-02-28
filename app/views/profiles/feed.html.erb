@@ -1,2 +1,65 @@
-<h1>Profiles#feed</h1>
-<p>Find me in app/views/profiles/feed.html.erb</p>
+<!-- - - - - - User personal and account info - - - - - -->
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <%= current_user.username %><br />
+        <%= image_tag(current_user.avatar.url(:small)) %><br />
+        <%= current_user.first_name %> <%= current_user.last_name %><br />
+        <%= current_user.location %>
+      </div>
+      <div class="col-md-6">
+        <%= current_user.bio[0..750] %>...</P>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+<!-- Left Column -->
+  <div class="col-md-6">
+<!-- - - - - - - - - - - User Goals - - - - - - - - - -->
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h5>My Current Goals <%= current_user.goals.count %></h5>
+        <% @goals.each do |goal|%>
+        <%= goal.name %>
+        <% end %>
+      </div>
+    </div>
+
+<!-- - - - - - - - - Completed Goals - - - - - - - - -->
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h5>My Completed Goals</h5>
+      </div>
+    </div>
+
+  </div> <!-- Left Column End -->
+
+<!-- Right Column -->
+  <div class="col-md-6">
+
+<!-- - - - - - - - - - New Goals Form - - - - - - - - - -->
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <strong>New Goal</strong>
+        <%= render 'goals/form' %>
+      </div>
+    </div>
+
+<!-- - - - - - - - - - - - Friends - - - - - - - - - - - -->
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Friends
+      </div>
+    </div>
+
+  </div> <!-- Right Column End -->
+</div>

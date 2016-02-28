@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get "profiles" => "profiles#index"
 
-  get "feed" => "profiles#feed"
+  get "mypage" => "profiles#feed"
 
   get "profiles/:id" => "profiles#show", as: :profile
 
