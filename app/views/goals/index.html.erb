@@ -1,33 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All User's Goals</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>All User's Goals</h1>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @goals.each do |goal| %>
-      <tr>
-        <td><%= goal.name %></td>
-        <td><%= goal.description %></td>
-        <td><%= goal.user.username %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <% if current_user.id == goal.user.id %>
-        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Goal', new_goal_path %>
+<% @goals.each do |goal| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Goal name: <%= goal.name %></h3>
+    </div>
+    <div class="panel-body">
+      <%= goal.description %>
+      <% if current_user.id == goal.user.id %>
+        <%= link_to 'Edit', edit_goal_path(goal) %>
+        <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= goal.user.username %>’s <%= link_to 'goal', goal %>
+    </div>
+  </div>
+<% end %>
