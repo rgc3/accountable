@@ -1,4 +1,21 @@
-<h1>All Users<h1/>
-<% @users.each do |user| %>
-  <%= link_to user.username, profile_path(user) %> <br />
-<% end %>
+<div class="row">
+<!-- Left Column -->
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">All Users</h1>
+      </div>
+      <div class="panel-body">
+        <% @users.each do |user| %>
+          <h3><%= image_tag(user.avatar.url(:navpic)) %> <%= link_to user.username, profile_path(user) %></h3>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<!-- Center Column -->
+  <div class="col-md-4">
+  </div>
+<!-- Right Column -->
+  <div class="col-md-4">
+  </div>
+</div> <!-- Row -->
