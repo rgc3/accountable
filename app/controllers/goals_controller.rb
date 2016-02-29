@@ -5,7 +5,9 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @goals = Goal.all.order("created_at DESC")
+    @users = User.all
+    
   end
 
   # GET /goals/1
@@ -67,6 +69,14 @@ class GoalsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def complete
+    @goal = Goal.find(params[:id])
+    @goal.update_attribute(:completed_at, Time.now)
+      redirect_to root_path
+  end
+  
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
