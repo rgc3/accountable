@@ -44,7 +44,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <h5>My <%= current_user.goals.count %> Current Goals</h5>
-        <% @goals.each do |goal|%>
+        <% @goals.each do |goal| %>
         <%= goal.name %><br />
         <% end %>
       </div>

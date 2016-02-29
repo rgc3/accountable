@@ -4,7 +4,7 @@ class RelationshipsController < ApplicationController
   end
   def show
     @relationship = Relationship.find(params[:id])
-    end
+  end
 
   # POST /relationships
   # POST /relationships.json
@@ -21,12 +21,12 @@ class RelationshipsController < ApplicationController
 
   # DELETE /relationships/1
   # DELETE /relationships/1.json
-def destroy
-  @relationship = current_user.relationships.find(params[:id])
-  @relationship.destroy
-  flash[:notice] = "No longer following."
-  redirect_to profile_path(current_user.id)
-end
+  def destroy
+    @relationship = current_user.relationships.find(params[:id])
+    @relationship.destroy
+    flash[:notice] = "No longer following."
+    redirect_to profile_path(current_user.id)
+  end
 
   private
 
