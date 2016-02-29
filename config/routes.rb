@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
  
 
-  root 'goals#index'
+  #root 'goals#index'
+  root 'profiles#feed'
 
 end

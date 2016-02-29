@@ -2,7 +2,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <h1>All User's Goals</h1>
+    <h1>All Goals</h1>
   </div>
 </div>
 
@@ -35,6 +35,7 @@
          <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
         <%= link_to 'Edit', edit_goal_path(goal) %>
         <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+       
       <% end %>
     </div>
     <div class="panel-footer">
@@ -43,3 +44,6 @@
   </div>
 <% end %>
 <%end%>
+
+
+<% render 'goals/leaders' %>

@@ -5,7 +5,9 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @goals = Goal.all.order("created_at DESC")
+    @users = User.all
+    
   end
 
   # GET /goals/1
@@ -69,10 +71,7 @@ class GoalsController < ApplicationController
       redirect_to root_path
   end
   
- def leaderboard
-   @user = User.all
-   @goal = Goal.all
- end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
