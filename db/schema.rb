@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160301114438) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.datetime "completed_at"
+    t.datetime "start_time"
   end
 
   add_index "goals", ["user_id"], name: "index_goals_on_user_id"
