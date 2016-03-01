@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   end
 
   def feed
-    @goals = Goal.where("user_id in (?) OR user_id = ?", current_user.friend_ids, current_user).order('created_at DESC')
+    @goals = Goal.where("user_id in (?) OR user_id = ?", current_user.friend_ids, current_user)
     @goal = Goal.new
   end
 
