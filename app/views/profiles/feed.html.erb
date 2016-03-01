@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Profiles#feed</h1>
 <p>Find me in app/views/profiles/feed.html.erb</p>
 
@@ -71,3 +72,95 @@
       </div>
      
 <%= render 'goals/form' %>
+=======
+<!-- - - - - - User personal and account info - - - - - -->
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+<!-- Left personal info panel -->
+      <div class="col-xs-2">
+        <%= image_tag(current_user.avatar.url(:small), class: "img-thumbnail") %>
+      </div>
+<!-- Center personal info panel -->
+      <div class="col-xs-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Details</h3>
+          </div>
+          <div class="panel-body">
+            <%= current_user.username %><br />
+            <%= current_user.first_name %> <%= current_user.last_name %><br />
+            <%= current_user.location %>
+          </div>
+        </div>
+      </div>
+<!-- Right personal info panel -->
+      <div class="col-xs-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Bio</h3>
+          </div>
+          <div class="panel-body">
+            <%= current_user.bio %>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- Row -->
+  </div>
+</div>
+
+<div class="row">
+
+<!-- Left Column -->
+  <div class="col-md-6">
+
+<!-- - - - - - - - - - - User Goals - - - - - - - - - -->
+
+<div class="panel panel-default">
+  <div class="panel-body">
+      <h5>My <%= current_user.goals.count %> Current Goals</h5>
+      <%= calendar number_of_days: 7 do |date| %>
+      <%= date.day %>
+      <% @goals.each do |goal|%>
+      <br />
+      <%= goal.name %><br />
+      <%= check_box_tag :done %>
+      <% end %>
+      <% end %>
+
+      </div>
+    </div>
+
+<!-- - - - - - - - - Completed Goals - - - - - - - - -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h5>My Completed Goals</h5>
+      </div>
+    </div>
+
+  </div> <!-- Left Column End -->
+
+<!-- Right Column -->
+  <div class="col-md-6">
+
+<!-- - - - - - - - - - New Goals Form - - - - - - - - - -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <strong>New Goal</strong>
+        <%= render 'goals/form' %>
+      </div>
+    </div>
+
+<!-- - - - - - - - - - - - Friends - - - - - - - - - - - -->
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h5>Friends</h5>
+        <%= current_user.relationships.count %> friends I follow.<br />
+        <%= current_user.inverse_relationships.count %> follow me.
+      </div>
+    </div>
+
+  </div> <!-- Right Column End -->
+</div>
+>>>>>>> b57af23faf91a5669c874e74d6ce1c9c41f404eb

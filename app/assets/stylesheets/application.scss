@@ -1,7 +1,15 @@
 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 .cant-see-me {
   display: none
+}
+// *= require simple_calendar
+check_box {
+  display: none
+}
+tr {
+  text-overflow: ellipsis;
 }
