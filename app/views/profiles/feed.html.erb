@@ -41,12 +41,19 @@
   <div class="col-md-6">
 
 <!-- - - - - - - - - - - User Goals - - - - - - - - - -->
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h5>My <%= current_user.goals.count %> Current Goals</h5>
-        <% @goals.each do |goal| %>
-        <%= goal.name %><br />
-        <% end %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+      <h5>My <%= current_user.goals.count %> Current Goals</h5>
+      <%= calendar number_of_days: 7 do |date| %>
+      <%= date.day %>
+      <% @goals.each do |goal|%>
+      <br />
+      <%= goal.name %><br />
+      <%= check_box_tag :done %>
+      <% end %>
+      <% end %>
+
       </div>
     </div>
 
