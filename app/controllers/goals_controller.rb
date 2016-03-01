@@ -23,6 +23,10 @@ class GoalsController < ApplicationController
   def edit
   end
 
+  def start_time
+    @goal.start # #Where 'start' is a attribute of type 'Date' accessible through MyModel's relationship
+  end
+
   # POST /goals
   # POST /goals.json
   def create
@@ -61,16 +65,22 @@ class GoalsController < ApplicationController
       format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
       format.json { head :no_content }
     end
+    def complete
+      @goal = Goal.find(params[:id])
+      @goal.update_attribute(:completed_at, Time.now)
+      redirect_to root_path
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_goal
-      @goal = Goal.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def goal_params
-      params.require(:goal).permit(:name, :description, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_goal
+    @goal = Goal.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def goal_params
+    params.require(:goal).permit(:name, :description, :user_id)
+  end
 end
