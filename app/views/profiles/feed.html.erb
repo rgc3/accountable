@@ -1,78 +1,4 @@
-<<<<<<< HEAD
-<h1>Profiles#feed</h1>
-<p>Find me in app/views/profiles/feed.html.erb</p>
 
-<div class="row">
-  <div class= "col-xs-3 panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <%= image_tag(current_user.avatar.url(:thumb)) %>
-        <h3><%# current_user.name %></h3>
-        <h5><%# current_user.username %></h5>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-4">
-         
-          <span class="small text">GOALS</span><br />
-          
-      
-          <%= current_user.goals.count %>
-          
-          
-  </ul>
- 
-        </div>
-        <div class="col-xs-4">
-          <span class="small text">FOLLOWING</span><br />
-          <% current_user.relationships.count %>
-          </div>
-        <div class="col-xs-4">
-          <span class="small text">FOLLOWERS</span><br />
-          <% current_user.inverse_relationships.count %>
-          </div>
-      </div>
-      <h5><p><%= current_user.bio %></p></h5>
-      <h5><%= current_user.location %></h5>
-      <h5>Joined on <%= current_user.created_at.strftime("%B %Y") %></h5>
-    </div>
-
-
-
-<div class= "col-xs-7 panel panel-default">
-    
-      <div class="panel-body">
-        <div class="well well-lg">
-         <h3>Current Goals</h3>
-        </div>
-         
-        <% @goals.each do |goal|%>
-      
-        
-        <strong><%= goal.user.username %> </strong>
-        <br />
-        <br />
-        <%= goal.name %><br />
-        <%= goal.description %>
-        <br />
-        <br />
-        <div class="panel-footer">
-        <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch,  class: "btn btn-success" %>
-        <%= link_to 'Edit', edit_goal_path(goal),
-        class: "btn btn-primary" %>
-        <%=link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
-       
-      </div>
-     
-          <%end %>
-        
-        <br />
-        <hr>
-        <%# end %>
-      </div>
-     
-<%= render 'goals/form' %>
-=======
 <!-- - - - - - User personal and account info - - - - - -->
 <div class="panel panel-default">
   <div class="panel-body">
@@ -163,4 +89,4 @@
 
   </div> <!-- Right Column End -->
 </div>
->>>>>>> b57af23faf91a5669c874e74d6ce1c9c41f404eb
+

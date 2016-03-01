@@ -32,6 +32,7 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.json
   def create
+   
     
     @goal = current_user.goals.build(goal_params)
         if @goal.save
@@ -72,20 +73,13 @@ class GoalsController < ApplicationController
       format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
     def complete
       @goal = Goal.find(params[:id])
       @goal.update_attribute(:completed_at, Time.now)
       redirect_to root_path
     end
-  end
-  
-  def complete
-    @goal = Goal.find(params[:id])
-    @goal.update_attribute(:completed_at, Time.now)
-      redirect_to root_path
-  end
-  
-  
+ 
 
   private
 
