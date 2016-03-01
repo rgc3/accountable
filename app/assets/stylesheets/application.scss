@@ -1,5 +1,3 @@
-
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -9,4 +7,8 @@
 // *= require simple_calendar
 check_box {
   display: none
+}
+
+.navbar {
+  margin-bottom: 0;
 }

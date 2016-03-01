@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get "profiles/:id" => "profiles#show", as: :profile
 
-  root 'goals#index'
+  get 'goals/index' => "goals#index"
+  
+  root 'welcome#index'
 
 end
