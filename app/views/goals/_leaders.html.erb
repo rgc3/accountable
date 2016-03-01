@@ -15,7 +15,7 @@
     <% @users.sort_by{|x| x.goals.count(:completed_at) }.reverse.each do |x| %>
       <tr>
         <td><%= x.username %></td>
-        <td><%= x.goals.count(:completed_at) %></td>
+        <td><%= x.goals.count(:completed_at) * 10 %></td>
       </tr>
     <% end %>
 </table>

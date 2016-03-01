@@ -32,7 +32,7 @@
     <div class="panel-body">
       <%= goal.description %>
       <% if current_user.id == goal.user.id %>
-         <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
+        <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
         <%= link_to 'Edit', edit_goal_path(goal) %>
         <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
        
