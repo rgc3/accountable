@@ -5,7 +5,9 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @goals = Goal.all.order("created_at DESC")
+    @users = User.all
+    
   end
 
   # GET /goals/1
@@ -30,17 +32,23 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.json
   def create
-    @goal = Goal.new(goal_params)
+   
+    
+    @goal = current_user.goals.build(goal_params)
+        if @goal.save
+            redirect_to root_path
+        end
+    # @goal = Goal.new(goal_params)
 
-    respond_to do |format|
-      if @goal.save
-        format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
-        format.json { render :show, status: :created, location: @goal }
-      else
-        format.html { render :new }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @goal.save
+    #     format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
+    #     format.json { render :show, status: :created, location: @goal }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @goal.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /goals/1
@@ -65,12 +73,13 @@ class GoalsController < ApplicationController
       format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
     def complete
       @goal = Goal.find(params[:id])
       @goal.update_attribute(:completed_at, Time.now)
       redirect_to root_path
     end
-  end
+ 
 
   private
 
