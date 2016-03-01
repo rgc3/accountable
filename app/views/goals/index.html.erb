@@ -6,44 +6,51 @@
   </div>
 </div>
 
-<% @goals.each do |goal| %>
-<% if goal.completed? %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><strike>Goal name: <%= goal.name %></strike> <%= goal.user.username %> has accomplished this goal!</h3>
-    </div>
-    <div class="panel-body">
-        
-      <%= goal.description %>
-      <% if current_user.id == goal.user.id %>
-        <%= link_to 'Edit', edit_goal_path(goal) %>
-        <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </div>
-    <div class="panel-footer">
-      <%= goal.user.username %>’s <%= link_to 'goal', goal %>
-    </div>
-  </div>
-   <%else%> 
-    <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Goal name: <%= goal.name %></h3>
-    </div>
-    <div class="panel-body">
-      <%= goal.description %>
-      <% if current_user.id == goal.user.id %>
-         <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
-        <%= link_to 'Edit', edit_goal_path(goal) %>
-        <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-       
-      <% end %>
-    </div>
-    <div class="panel-footer">
-      <%= goal.user.username %>’s <%= link_to 'goal', goal %>
-    </div>
-  </div>
-<% end %>
-<%end%>
-<%= render 'leaders' %>
+  <div class="row">
+<!-- Left Column -->
+  <div class="col-xs-8">
+    <% @goals.each do |goal| %>
+    <% if goal.completed? %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strike>Goal name: <%= goal.name %></strike> <%= goal.user.username %> has accomplished this goal!</h3>
+        </div>
+        <div class="panel-body">
 
+          <%= goal.description %>
+          <% if current_user.id == goal.user.id %>
+            <%= link_to 'Edit', edit_goal_path(goal) %>
+            <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+        <div class="panel-footer">
+          <%= goal.user.username %>’s <%= link_to 'goal', goal %>
+        </div>
+      </div>
+       <%else%>
+        <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Goal name: <%= goal.name %></h3>
+        </div>
+        <div class="panel-body">
+          <%= goal.description %>
+          <% if current_user.id == goal.user.id %>
+             <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
+            <%= link_to 'Edit', edit_goal_path(goal) %>
+            <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
 
+          <% end %>
+        </div>
+        <div class="panel-footer">
+          <%= goal.user.username %>’s <%= link_to 'goal', goal %>
+        </div>
+      </div>
+    <% end %>
+    <%end%>
+  </div>
+
+<!-- Right Column -->
+  <div class="col-xs-4">
+    <%= render 'leaders' %>
+  </div>
+</div>
