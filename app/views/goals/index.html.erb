@@ -33,7 +33,7 @@
           <h3 class="panel-title">Goal name: <%= goal.name %></h3>
         </div>
         <div class="panel-body">
-          <%= goal.description %>
+          <%= image_tag(goal.user.avatar.url(:navpic)) %> <%= goal.description %>
           <% if current_user.id == goal.user.id %>
              <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch %>
             <%= link_to 'Edit', edit_goal_path(goal) %>
