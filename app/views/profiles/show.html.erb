@@ -1,13 +1,13 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<h1>User Profiles</h1>
 
-<%= @user.first_name %>
+<%= image_tag(current_user.avatar.url(:small), class: "img-thumbnail") %>
+<%= @user.first_name %> <%= @user.last_name %><br />
 <%= @user.username %><br />
 
 <%= @user.goals.count %> <span class="small text">Goals</span><br />
 <%= @user.bio %>
 <%= @user.location %>
-Joined on <%= @user.created_at.strftime("%B %Y") %>
+Joined in <%= @user.created_at.strftime("%B %Y") %>
 
 <!-- Following and Unfollowing users -->
 

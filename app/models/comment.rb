@@ -63,13 +63,14 @@ class Comment < ActiveRecord::Base
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def comment_params
-    params.require(:comment).permit(:author, :comment_entry, :goal_id, :user_id)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def comment_params
+      params.require(:comment).permit(:author, :comment_entry, :goal_id, :user_id)
+    end
+
 end

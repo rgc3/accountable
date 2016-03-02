@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20160229150747) do
     t.string   "name"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "completed_at"
     t.datetime "start_time"
   end
 
