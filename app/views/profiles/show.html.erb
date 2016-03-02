@@ -1,13 +1,50 @@
-<h1>User Profiles</h1>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>User Profiles</h1>
+  </div>
+</div>
 
-<%= image_tag(@user.avatar.url(:small), class: "img-thumbnail") %>
-<%= @user.first_name %> <%= @user.last_name %><br />
-<%= @user.username %><br />
+<!-- User Profile Panel -->
 
-<%= @user.goals.count %> <span class="small text">Goals</span><br />
-<%= @user.bio %>
-<%= @user.location %>
-Joined in <%= @user.created_at.strftime("%B %Y") %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <!-- Left Column -->
+      <div class="col-md-2">
+        <%= image_tag(@user.avatar.url(:small), class: "img-thumbnail") %><br />
+          Joined in <%= @user.created_at.strftime("%B %Y") %><br />
+        <%= @user.goals.count %> <span class="small text">Goals</span><br />
+      </div>
+      <!-- Center Column -->
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Details</h3>
+          </div>
+          <div class="panel-body">
+            <strong>Username</strong><br />
+            <%= @user.username %><br />
+            <strong>Name</strong><br />
+            <%= @user.first_name %> <%= @user.last_name %><br />
+            <strong>Location</strong><br />
+            <%= @user.location %>
+          </div>
+        </div>
+      </div>
+      <!-- Right Column -->
+      <div class="col-md-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Bio</h3>
+          </div>
+          <div class="panel-body">
+            <%= @user.bio %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Following and Unfollowing users -->
 
@@ -21,10 +58,44 @@ Joined in <%= @user.created_at.strftime("%B %Y") %>
 
 <br /><br />
 
-<!-- User goals -->
+<div class="row">
+  <!-- Left Column -->
 
-<% @user.goals.each do |goal| %>
-<strong>Goal: <%= goal.name %></strong><br />
-<%= goal.description %><br />
-<hr />
-<% end %>
+  <div class="col-md-6">
+    <!-- User goals -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Current Goals</h3>
+      </div>
+      <div class="panel-body">
+        <% @user.goals.each do |goal| %>
+        <strong>Goal: <%= goal.name %></strong><br />
+        <%= goal.description %><br />
+        <hr />
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column -->
+    <div class="col-md-6">
+      <!-- User's completed goals -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Completed Goals</h3>
+        </div>
+        <div class="panel-body">
+          <% @user.goals.each do |goal|%>
+            <% if goal.completed? %>
+            <br />
+            <%= goal.name %><br />
+            <%=goal.completed_at.strftime("%D") %>
+            <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <hr />
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
