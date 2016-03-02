@@ -47,14 +47,12 @@
   <div class="panel-body">
       <h5>My <%= current_user.goals.count %> Current Goals</h5>
        <%= week_calendar events: @goals do |date, goals| %>
-
       <%= date.day %>
       <% goals.each do |goal|%>
       <% unless goal.completed? %>
       <br />
-      <%= goal.name %><br />    
-       <%= link_to 'DONE!', complete_goal_path(goal), method: :patch %>
-      <%= check_box_tag :done %>
+      <%= goal.name %><br />
+      <%= link_to 'DONE!', complete_goal_path(goal), method: :patch, class:"btn btn-primary btn-xs" %>
       <% end %>
       <% end %>
       <% end %>
