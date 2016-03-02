@@ -19,8 +19,8 @@
 
           <%= image_tag(goal.user.avatar.url(:navpic)) %> <%= goal.description %>
           <% if current_user.id == goal.user.id %>
-            <%= link_to 'Edit', edit_goal_path(goal), class: "btn btn-primary btn-sm" %>
-            <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+            <%= link_to 'Edit', edit_goal_path(goal), class: "btn btn-primary btn-xs" %>
+            <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
           <% end %>
         </div>
         <div class="panel-footer">
@@ -35,13 +35,13 @@
         <div class="panel-body">
           <%= image_tag(goal.user.avatar.url(:navpic)) %> <%= goal.description %>
           <% if current_user.id == goal.user.id %>
-          <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch , class: "btn btn-primary btn-sm"%>
-            <%= link_to 'Edit', edit_goal_path(goal), class: "btn btn-primary btn-sm" %>
-            <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger btn-sm"%>
+          <%= link_to 'I DID IT!', complete_goal_path(goal), method: :patch , class: "btn btn-primary btn-xs"%>
+            <%= link_to 'Edit', edit_goal_path(goal), class: "btn btn-primary btn-xs" %>
+            <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger btn-xs"%>
           <% end %>
         </div>
         <div class="panel-footer">
-          <%= goal.user.username %>’s <%= link_to 'goal', goal , class: "btn btn-primary btn-sm"%>
+          <%= goal.user.username %>’s <%= link_to 'goal', goal , class: "btn btn-primary btn-xs"%>
         </div>
       </div>
     <% end %>
