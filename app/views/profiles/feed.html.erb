@@ -1,3 +1,4 @@
+
 <!-- - - - - - User personal and account info - - - - - -->
 <div class="panel panel-default">
   <div class="panel-body">
@@ -20,6 +21,7 @@
         </div>
       </div>
 <!-- Right personal info panel -->
+
       <div class="col-xs-7">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -30,7 +32,6 @@
           </div>
         </div>
       </div>
-
     </div> <!-- Row -->
   </div>
 </div>
@@ -41,17 +42,21 @@
   <div class="col-md-6">
 
 <!-- - - - - - - - - - - User Goals - - - - - - - - - -->
+
 <div class="panel panel-default">
   <div class="panel-body">
       <h5>My <%= current_user.goals.count %> Current Goals</h5>
-      <%= calendar number_of_days: 7 do |date| %>
+       <%= week_calendar events: @goals do |date, goals| %>
       <%= date.day %>
-      <% @goals.each do |goal|%>
+      <% goals.each do |goal|%>
+      <% unless goal.completed? %>
       <br />
-      <%= goal.name %><br /> 
-      <%= check_box_tag :done %>
+      <%= goal.name %><br />
+      <%= link_to 'DONE!', complete_goal_path(goal), method: :patch, class:"btn btn-primary btn-xs" %>
       <% end %>
       <% end %>
+      <% end %>
+      <%= will_paginate @goals, renderer: BootstrapPagination::Rails %>
       </div>
     </div>
 
@@ -59,6 +64,15 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <h5>My Completed Goals</h5>
+         <% @goals.each do |goal|%>
+      <% if goal.completed? %>
+      <br />
+      <%= goal.name %><br />
+      <%=goal.completed_at.strftime("%D") %>
+      <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      <% end %>
+      <% end %>
       </div>
     </div>
 

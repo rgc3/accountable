@@ -1,5 +1,3 @@
-
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -7,6 +5,18 @@
   display: none
 }
 // *= require simple_calendar
+
 check_box {
   display: none
+}
+
+tr {
+  text-overflow: ellipsis;
+}
+.navimg {
+  margin-top: 10px;
+}
+
+.navbar {
+  margin-bottom: 0;
 }
