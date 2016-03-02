@@ -16,3 +16,19 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+// $(document).ready(function(){
+// $('button').click(function(){
+//   $('.bio').toggle();
+// });
+// });
+
+//  $(document).ready(function(){
+//     $('button').click(function() {
+//   $('.goals').empty();
+//  });
+// });
+//  $(document).ready(function () {
+//     setTimeout(function(){
+//         $('.panel-body').fadeIn(2500);
+//     }, 500);
+// });

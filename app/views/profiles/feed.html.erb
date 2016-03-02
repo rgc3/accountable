@@ -20,6 +20,7 @@
         </div>
       </div>
 <!-- Right personal info panel -->
+
       <div class="col-xs-7">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -30,7 +31,6 @@
           </div>
         </div>
       </div>
-
     </div> <!-- Row -->
   </div>
 </div>
@@ -44,13 +44,12 @@
 <div class="panel panel-default">
   <div class="panel-body">
       <h5>My <%= current_user.goals.count %> Current Goals</h5>
-      <%= calendar number_of_days: 7 do |date| %>
+       <%= week_calendar events: @goals do |date, goals| %>
       <%= date.day %>
       <% @goals.each do |goal|%>
       <br />
-      <%= goal.name %><br /> 
-      <%= check_box_tag :done %>
-      <% end %>
+      <%= goal.name %><br />
+       <% end %>
       <% end %>
       </div>
     </div>
