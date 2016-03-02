@@ -46,8 +46,9 @@
 <div class="panel panel-default">
   <div class="panel-body">
       <h5>My <%= current_user.goals.count %> Current Goals</h5>
-      <%= calendar number_of_days: 7 do |date| %>
+      <%= week_calendar events: @goals do |date, goals| %>
       <%= date.day %>
+
       <% @goals.each do |goal|%>
       <br />
       <%= goal.name %><br />
