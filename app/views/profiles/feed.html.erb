@@ -48,8 +48,7 @@
       <h5>My <%= current_user.goals.count %> Current Goals</h5>
       <%= week_calendar events: @goals do |date, goals| %>
       <%= date.day %>
-
-      <% @goals.each do |goal|%>
+      <% goals.each do |goal|%>
       <% unless goal.completed? %>
       <br />
       <%= goal.name %><br />
