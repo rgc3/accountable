@@ -9,8 +9,20 @@
       <!-- Left Column -->
       <div class="col-md-2">
         <%= image_tag(@user.avatar.url(:small), class: "img-thumbnail") %><br />
-          Joined in <%= @user.created_at.strftime("%B %Y") %><br />
+
         <%= @user.goals.count %> <span class="small text">Goals</span><br />
+        Joined in <%= @user.created_at.strftime("%B %Y") %><br />
+
+        <!-- Following and Unfollowing users -->
+
+        <% if current_user.id != @user.id %>
+          <% if current_user.friends.include?(@user) %>
+            <%= link_to "Following", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete, class: "btn btn-primary btn-xs", id:"unfollow_btn" %>
+          <% else %>
+            <%= link_to "Follow", relationships_path(:friend_id => @user), method: :post, class: "btn btn_success" %>
+          <% end %>
+        <% end %>
+
       </div>
       <!-- Center Column -->
       <div class="col-md-3">
@@ -24,7 +36,7 @@
             <strong>Name</strong><br />
             <%= @user.first_name %> <%= @user.last_name %><br />
             <strong>Location</strong><br />
-            <%= @user.location %>
+            <%= @user.location %><br />
           </div>
         </div>
       </div>
@@ -43,17 +55,7 @@
   </div>
 </div>
 
-<!-- Following and Unfollowing users -->
-
-<% if current_user.id != @user.id %>
-  <% if current_user.friends.include?(@user) %>
-    <%= link_to "Following", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete, class: "btn btn-primary btn-xs", id:"unfollow_btn" %>
-  <% else %>
-    <%= link_to "Follow", relationships_path(:friend_id => @user), method: :post, class: "btn btn_success" %>
-  <% end %>
-<% end %>
-
-<br /><br />
+<br />
 
 <div class="row">
   <!-- Left Column -->
