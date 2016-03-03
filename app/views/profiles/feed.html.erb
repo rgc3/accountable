@@ -74,10 +74,9 @@
          <% @goals.each do |goal|%>
       <% if goal.completed? %>
       <br />
-      <%= goal.name %><br />
+      <strong><%= goal.name %></strong><br />
       <%=goal.completed_at.strftime("%D") %>
       <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
-
       <% end %>
       <% end %>
       </div>
