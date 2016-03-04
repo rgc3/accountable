@@ -1,8 +1,7 @@
 == README
 
 ===Final Group Project
-====Tech Talent South - Raleigh Campus
-=====Winter 2016 Full Time Cohort
+====Tech Talent South - Raleigh Campus - Winter 2016 Full Time Cohort
 
 This accountability app is built with Ruby on Rails as part of a final group project.
 
